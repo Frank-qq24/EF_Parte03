@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}{% endblock %} || EF
+    </title>
+    {% load static %}<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+</head>
+<body>
+    <header>
+        <div id="logotipo">
+            <img src="{% static 'images/untels.png' %}">
+            <h1>EF | F. Quintana, H. Julca</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'saludo' %}">Saludo</a></li>
+            <li><a href="{% url 'integrantes' %}">Integrantes</a></li>
+            <li><a href="{% url 'crear_producto' %}">Crear producto</a></li>
+            <li><a href="{% url 'crear_curso' %}">Crear Curso</a></li>
+        </ul>
+    </nav>
+    
+    <div class="barra">
+        <span class="esquina-izquierda"></span>
+        <span class="relleno-barra"></span>
+        <span class="esquina-derecha"></span>
+    </div>
+
+    <div id="content">
+        <div class="box">{% block content %}{% endblock %}</div>
+    </div>
+
+    <footer>
+        UNTELS - Lenguaje de Programación III &COPY; Humberto Julca, Frank Quintana, Miguel Yauricasa - {% now "d/m/Y h:m:s " %}
+    </footer>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    {{titulo}}
+{% endblock %}
+
+{% block content %}
+    <h1 class="title"> {{titulo}} </h1>
+    <hr> 
+    <p><strong>Estudiantes integrantes del equipo: </strong></p>
+    <ul>
+        {% for integrantes in integrantes%}
+        <li>{{integrantes}}</li>
+        {% empty%}
+            <p> No hay integrantes registrados</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
