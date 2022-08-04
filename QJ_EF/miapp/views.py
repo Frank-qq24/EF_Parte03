@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render, HttpResponse
+from miapp.models import curso
 from miapp.models import producto
 from datetime import datetime
 
@@ -39,8 +40,20 @@ def crear_producto(request):
     })
 
 def crear_curso(request):
+    cursos =curso(
+    nombre          = "Gestion de Procesos",
+    horas           = "6",
+    creditos        = "4",
+    Fecha_registro = datetime.today().strftime('%Y-%m-%d'),
+    estado          = "A"
+    )
+    cursos.save()
 
     return render(request, 'crear_curso.html', {
         'titulo':'Crear producto',
-        'curso':""
+        'curso':
+        f"Curso registrado:"+
+        f"//codigo: {cursos.codigo} // nombre: {cursos.nombre} // precio_compra: {cursos.horas} //"+
+        f"Creditos: {cursos.creditos} // Fecha_registro: {cursos.Fecha_registro}"+
+        f"// Estado:{cursos.estado}"
     })
